@@ -3,6 +3,8 @@ const {
   isString,
   isBoolean,
   isArray,
+  isObject,
+  isFunction,
   castToNumber,
   castToString,
   castToBoolean,
@@ -48,6 +50,26 @@ describe('validator module', () => {
       expect(isArray('3')).toBeFalsy();
       expect(isArray({})).toBeFalsy();
       expect(isArray(() => {})).toBeFalsy();
+    });
+
+    it('input is an object', () => {
+      expect(isObject({})).toBeTruthy();
+      expect(isObject([])).toBeFalsy();
+      expect(isObject(true)).toBeFalsy();
+      expect(isObject(false)).toBeFalsy();
+      expect(isObject(3)).toBeFalsy();
+      expect(isObject('3')).toBeFalsy();
+      expect(isObject(() => {})).toBeFalsy();
+    });
+
+    it('input is a function', () => {
+      expect(isFunction(() => {})).toBeTruthy();
+      expect(isFunction({})).toBeFalsy();
+      expect(isFunction([])).toBeFalsy();
+      expect(isFunction(true)).toBeFalsy();
+      expect(isFunction(false)).toBeFalsy();
+      expect(isFunction(3)).toBeFalsy();
+      expect(isFunction('3')).toBeFalsy();
     });
   });
 
@@ -103,6 +125,9 @@ describe('validator module', () => {
 
   it('can get the right caster', () => {
     expect(getCaster(Number)).toEqual(castToNumber);
+    expect(getCaster(String)).toEqual(castToString);
+    expect(getCaster(Boolean)).toEqual(castToBoolean);
+    expect(getCaster(Array)).toEqual(castToArray);
     expect(getCaster(Promise)).toBeNull();
   });
 });
