@@ -2,6 +2,7 @@ const {
   isNumber,
   isString,
   isBoolean,
+  isArray,
   castToNumber,
   castToString,
   castToBoolean,
@@ -36,6 +37,16 @@ describe('validator module', () => {
       expect(isBoolean([])).toBeFalsy();
       expect(isBoolean({})).toBeFalsy();
       expect(isBoolean(() => {})).toBeFalsy();
+    });
+
+    it('input is an array', () => {
+      expect(isArray([])).toBeTruthy();
+      expect(isArray(true)).toBeFalsy();
+      expect(isArray(false)).toBeFalsy();
+      expect(isArray(3)).toBeFalsy();
+      expect(isArray('3')).toBeFalsy();
+      expect(isArray({})).toBeFalsy();
+      expect(isArray(() => {})).toBeFalsy();
     });
   });
 
