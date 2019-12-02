@@ -9,7 +9,6 @@
   "scripts": {
     "test": "jest",
     "tw": "npm run test -- --watch",
-    "lint": "eslint '**/*.js'"
   },
   "repository": {
     "type": "git",
