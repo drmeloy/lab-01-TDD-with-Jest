@@ -1,8 +1,10 @@
 const {
   isNumber,
   isString,
+  isBoolean,
   castToNumber,
   castToString,
+  castToBoolean,
   getCaster
 } = require('../lib/types.js');
 
@@ -24,6 +26,16 @@ describe('validator module', () => {
       expect(isString({})).toBeFalsy();
       expect(isString(() => {})).toBeFalsy();
       expect(isString(true)).toBeFalsy();
+    });
+
+    it('input is a boolean', () => {
+      expect(isBoolean(true)).toBeTruthy();
+      expect(isBoolean(false)).toBeTruthy();
+      expect(isBoolean(3)).toBeFalsy();
+      expect(isBoolean('3')).toBeFalsy();
+      expect(isBoolean([])).toBeFalsy();
+      expect(isBoolean({})).toBeFalsy();
+      expect(isBoolean(() => {})).toBeFalsy();
     });
   });
 
@@ -52,7 +64,17 @@ describe('validator module', () => {
       expect(() => castToString({})).toThrowErrorMatchingSnapshot();
     });
 
-
+    it('can cast values to a boolean', () => {
+      expect(castToBoolean(3)).toEqual(true);
+      expect(castToBoolean(0)).toEqual(false);
+      expect(castToBoolean('hi')).toEqual(true);
+      expect(castToBoolean('')).toEqual(false);
+      expect(castToBoolean(NaN)).toEqual(false);
+      expect(castToBoolean(undefined)).toEqual(false);
+      expect(castToBoolean(null)).toEqual(false);
+      expect(castToBoolean([])).toEqual(true);
+      expect(castToBoolean({})).toEqual(true);
+    });
   });
 
   it('can get the right caster', () => {
