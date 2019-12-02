@@ -1,28 +1,18 @@
 {
-  "name": "lab-01-TDD-with-Jest",
-  "version": "1.0.0",
-  "description": "This is the first lab in a three day series about schema and schema\r validation. For this lab, you'll learn to work with Jest (a new\r testing suite, more robust than QUnit) by writing functions to\r check a values type (`is*`) and functions to cast a value into\r another type (`castTo*`).",
+  "name": "01-tdd-types",
+  "version": "0.0.1",
+  "description": "",
   "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
   "scripts": {
-    "test": "jest",
-    "tw": "npm run test -- --watch",
+    "test": "jest --verbose --coverage",
+    "test:watch": "npm run test -- --watch",
+    "lint": "eslint '**/*.js'"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/drmeloy/lab-01-TDD-with-Jest.git"
-  },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/drmeloy/lab-01-TDD-with-Jest/issues"
-  },
-  "homepage": "https://github.com/drmeloy/lab-01-TDD-with-Jest#readme",
   "devDependencies": {
     "@types/jest": "^24.0.23",
+    "eslint": "^6.1.0",
     "jest": "^24.9.0"
   }
 }
